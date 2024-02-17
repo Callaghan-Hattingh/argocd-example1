@@ -10,7 +10,9 @@ kubectl create namespace argocd --dry-run=client --output=yaml | kubectl apply -
 
 # Deploy Argo CD using Helm, including CRDs, within the 'argocd' namespace
 echo "Deploying Argo CD to the 'argocd' namespace..."
-helm template argocd . --include-crds --namespace argocd | kubectl apply -n argocd -f -
+#helm template argocd . --include-crds --namespace argocd | kubectl apply -n argocd -f -
+helm install argocd . \
+    --namespace=argocd \
+    --create-namespace
 
-echo "Deployment completed."
 
