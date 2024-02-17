@@ -1,10 +1,4 @@
-## ArgoCD configuration
-## Ref: https://github.com/argoproj/argo-cd
-##
-## Server
-server:
-  ## ArgoCD config
-  ## reference https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
+sever:
   configEnabled: true
   config:
     repositories: |
@@ -13,7 +7,7 @@ server:
       - name: argo-helm
         type: helm
         url: https://argoproj.github.io/argo-helm
-  additionalApplications: 
+  additionalApplications:
     - name: argocd
       namespace: argocd
       destination:
@@ -25,8 +19,7 @@ server:
           version: v3
           valueFiles:
           - values.yaml
-          - ../values-override.yaml
-        path: argocd-install/argo-cd
+        path: argocd-install/argocd
         repoURL: https://github.com/Callaghan-Hattingh/argocd-example1.git
         targetRevision: HEAD
       syncPolicy:
@@ -66,7 +59,7 @@ server:
         automated:
           selfHeal: true
           prune: true
-  additionalProjects: 
+  additionalProjects:
   - name: argocd
     namespace: argocd
     additionalLabels: {}

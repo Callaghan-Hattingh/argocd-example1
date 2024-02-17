@@ -1,2 +1,8 @@
 **/**.ignore
 .idea
+Chart.lock
+Chart.lock~
+*.tgz
+*.yaml~
+*.yml~
+
